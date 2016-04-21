@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div id="result"></div>
+
+    <script>
+        /*
+            Write a constructor for Car which takes in an array from the junkyard and creates
+            a new car object with those data.
+
+            Add the following methods to Car:
+                madeBefore2000()
+                    returns true if the car's year is < 2000
+                matchesColor(clr)
+                    returns true if the car's color contains clr
+                isGoodDeal()
+                    returns true if the car's milage is less than the car's price
+        */
+        function Car(make, model, year, miles, color, price) {
+            this.make = make;
+            this.model = model;
+            this.year = parseInt(year);
+            this.miles = miles;
+            this.color = color;
+            this.price = price;
+
+            this.madeBefore2000 = function () { 
+//don't need to pass yr bc it's already defined.
+                return this.year < 2000; //is a boolean - will either be T or F
+            }
+            
+             this.matchesColor = function (testColor) {
+                 //return this.color.indexOf(color) != -1;
+                
+                 if(this.color.indexOf(testColor) == -1) { // this.color = brightBlue
+                    return false;                         //test color = blue
+                }                   //indexOf finds where blue starts in bright blue
+                return true;
+            }
+             
+              this.isGoodDeal = function () {
+                return this.miles < this.price;
+        }
+        }
+        function tests() {
+            var testCar = new Car('Honda', 'Accord', '2015', 17000, 'bright blue', 17999);
+            console.log(testCar.madeBefore2000() == false);
+            console.log(testCar.matchesColor("blue") == true);
+            console.log(testCar.matchesColor("red") == false);
+            console.log(testCar.isGoodDeal() == true);
+
+            var testCarTwo = new Car('Ford', 'Tarus', '1990', 137000, 'white', 10999);
+            console.log(testCarTwo.madeBefore2000() == true);
+            console.log(testCarTwo.matchesColor("white") == true);
+            console.log(testCarTwo.matchesColor("blue") == false);
+            console.log(testCarTwo.isGoodDeal() == false)
+        }
+    
+        tests();
+
+
+
+
+        // Write your code here!!!
+    </script>
+
+
+
+
+</body>
+
+</html>
